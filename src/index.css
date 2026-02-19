@@ -2,95 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 222 47% 5%;
+    --foreground: 160 100% 90%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 40% 8%;
+    --card-foreground: 160 100% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 40% 8%;
+    --popover-foreground: 160 100% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 152 100% 50%;
+    --primary-foreground: 222 47% 5%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 30% 14%;
+    --secondary-foreground: 160 60% 80%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 30% 12%;
+    --muted-foreground: 210 20% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 174 100% 40%;
+    --accent-foreground: 222 47% 5%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 90% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 30% 18%;
+    --input: 220 30% 14%;
+    --ring: 152 100% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* AgriTech custom tokens */
+    --neon-green: 152 100% 50%;
+    --neon-teal: 174 100% 40%;
+    --neon-red: 0 100% 60%;
+    --panel-bg: 220 40% 7%;
+    --glass-bg: 220 40% 10%;
+    --glass-border: 152 50% 20%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 222 47% 4%;
+    --sidebar-foreground: 160 60% 75%;
+    --sidebar-primary: 152 100% 50%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 220 30% 12%;
+    --sidebar-accent-foreground: 160 60% 80%;
+    --sidebar-border: 220 30% 14%;
+    --sidebar-ring: 152 100% 50%;
   }
 }
 
@@ -101,5 +60,209 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--neon-green) / 0.3);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--neon-green) / 0.6);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    background: hsl(var(--glass-bg) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--glass-border) / 0.5);
+    border-radius: var(--radius);
+  }
+
+  .glass-card-glow {
+    background: hsl(var(--glass-bg) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--neon-green) / 0.3);
+    border-radius: var(--radius);
+    box-shadow: 0 0 20px hsl(var(--neon-green) / 0.08), 0 0 40px hsl(var(--neon-green) / 0.04);
+  }
+
+  .glass-card-anomaly {
+    background: hsl(var(--glass-bg) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--neon-red) / 0.5);
+    border-radius: var(--radius);
+    box-shadow: 0 0 30px hsl(var(--neon-red) / 0.15), 0 0 60px hsl(var(--neon-red) / 0.08);
+  }
+
+  /* Neon text */
+  .text-neon-green {
+    color: hsl(var(--neon-green));
+    text-shadow: 0 0 10px hsl(var(--neon-green) / 0.5);
+  }
+
+  .text-neon-teal {
+    color: hsl(var(--neon-teal));
+    text-shadow: 0 0 10px hsl(var(--neon-teal) / 0.5);
+  }
+
+  .text-neon-red {
+    color: hsl(var(--neon-red));
+    text-shadow: 0 0 10px hsl(var(--neon-red) / 0.5);
+  }
+
+  /* Glow borders */
+  .border-neon-green {
+    border-color: hsl(var(--neon-green) / 0.5);
+  }
+
+  /* Control button */
+  .ctrl-btn {
+    @apply w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+    background: hsl(var(--neon-green) / 0.1);
+    border: 1px solid hsl(var(--neon-green) / 0.3);
+    color: hsl(var(--neon-green));
+  }
+  .ctrl-btn:hover:not(:disabled) {
+    background: hsl(var(--neon-green) / 0.2);
+    border-color: hsl(var(--neon-green) / 0.6);
+    box-shadow: 0 0 12px hsl(var(--neon-green) / 0.2);
+  }
+  .ctrl-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .ctrl-btn-teal {
+    @apply w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+    background: hsl(var(--neon-teal) / 0.1);
+    border: 1px solid hsl(var(--neon-teal) / 0.3);
+    color: hsl(var(--neon-teal));
+  }
+  .ctrl-btn-teal:hover:not(:disabled) {
+    background: hsl(var(--neon-teal) / 0.2);
+    border-color: hsl(var(--neon-teal) / 0.6);
+    box-shadow: 0 0 12px hsl(var(--neon-teal) / 0.2);
+  }
+  .ctrl-btn-teal:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Metric card */
+  .metric-card {
+    @apply glass-card p-4 flex flex-col gap-1;
+    border-color: hsl(var(--neon-green) / 0.2);
+    transition: all 0.2s;
+  }
+  .metric-card:hover {
+    border-color: hsl(var(--neon-green) / 0.4);
+    box-shadow: 0 0 16px hsl(var(--neon-green) / 0.08);
+  }
+
+  /* Section label */
+  .section-label {
+    @apply text-xs font-bold tracking-widest uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Terminal/log feed */
+  .terminal-feed {
+    background: hsl(220 47% 4%);
+    border: 1px solid hsl(var(--neon-green) / 0.2);
+    border-radius: var(--radius);
+    font-family: 'Courier New', 'Fira Code', monospace;
+  }
+}
+
+/* ===================== Animations ===================== */
+@keyframes pulse-glow-green {
+  0%, 100% {
+    box-shadow: 0 0 10px hsl(var(--neon-green) / 0.4), 0 0 20px hsl(var(--neon-green) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(var(--neon-green) / 0.7), 0 0 40px hsl(var(--neon-green) / 0.4);
+  }
+}
+
+@keyframes pulse-glow-red {
+  0%, 100% {
+    box-shadow: 0 0 15px hsl(var(--neon-red) / 0.5), 0 0 30px hsl(var(--neon-red) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--neon-red) / 0.8), 0 0 60px hsl(var(--neon-red) / 0.5);
+  }
+}
+
+@keyframes dot-ping {
+  0% { transform: scale(1); opacity: 1; }
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes fade-slide-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes number-glow {
+  0%, 100% { text-shadow: 0 0 8px hsl(var(--neon-green) / 0.5); }
+  50% { text-shadow: 0 0 20px hsl(var(--neon-green) / 0.9), 0 0 40px hsl(var(--neon-green) / 0.5); }
+}
+
+@keyframes header-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@layer utilities {
+  .animate-pulse-glow-green {
+    animation: pulse-glow-green 2s ease-in-out infinite;
+  }
+  .animate-pulse-glow-red {
+    animation: pulse-glow-red 1.5s ease-in-out infinite;
+  }
+  .animate-dot-ping {
+    animation: dot-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .animate-fade-slide-in {
+    animation: fade-slide-in 0.4s ease-out forwards;
+  }
+  .animate-number-glow {
+    animation: number-glow 2s ease-in-out infinite;
+  }
+
+  .gradient-text-green {
+    background: linear-gradient(90deg, hsl(var(--neon-green)), hsl(var(--neon-teal)), hsl(var(--neon-green)));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: header-shimmer 4s linear infinite;
+  }
+
+  .header-bg {
+    background: linear-gradient(135deg, hsl(222 47% 4%) 0%, hsl(220 40% 8%) 50%, hsl(222 47% 4%) 100%);
+    border-bottom: 1px solid hsl(var(--neon-green) / 0.2);
+    box-shadow: 0 4px 40px hsl(var(--neon-green) / 0.05);
+  }
+
+  .sidebar-bg {
+    background: hsl(222 47% 4%);
+    border-right: 1px solid hsl(var(--neon-green) / 0.15);
   }
 }

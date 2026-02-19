@@ -14,6 +14,9 @@ export default {
     },
     extend: {
       colors: {
+        "neon-green": "hsl(var(--neon-green))",
+        "neon-teal": "hsl(var(--neon-teal))",
+        "neon-red": "hsl(var(--neon-red))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -65,25 +68,42 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0", opacity: "0" },
+          to: { height: "var(--radix-accordion-content-height)", opacity: "1" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)", opacity: "1" },
+          to: { height: "0", opacity: "0" },
+        },
+        "fade-slide-in": {
+          from: { opacity: "0", transform: "translateY(12px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "number-glow": {
+          "0%, 100%": { textShadow: "0 0 8px hsl(152 100% 50% / 0.5)" },
+          "50%": { textShadow: "0 0 20px hsl(152 100% 50% / 0.9), 0 0 40px hsl(152 100% 50% / 0.5)" },
+        },
+        "dot-ping": {
+          "0%": { transform: "scale(1)", opacity: "1" },
+          "75%, 100%": { transform: "scale(2)", opacity: "0" },
+        },
+        "pulse-glow-green": {
+          "0%, 100%": { boxShadow: "0 0 10px hsl(152 100% 50% / 0.4)" },
+          "50%": { boxShadow: "0 0 30px hsl(152 100% 50% / 0.7)" },
+        },
+        "pulse-glow-red": {
+          "0%, 100%": { boxShadow: "0 0 15px hsl(0 100% 60% / 0.5)" },
+          "50%": { boxShadow: "0 0 40px hsl(0 100% 60% / 0.8)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-slide-in": "fade-slide-in 0.4s ease-out",
+        "number-glow": "number-glow 2s ease-in-out infinite",
+        "dot-ping": "dot-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
+        "pulse-glow-green": "pulse-glow-green 2s ease-in-out infinite",
+        "pulse-glow-red": "pulse-glow-red 1.5s ease-in-out infinite",
       },
     },
   },
